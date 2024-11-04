@@ -1,0 +1,3 @@
+﻿SELECT 1 AS id, t1.v FROM @t1 t1
+UNION ALL
+SELECT 1 AS id, t2.v FROM @t2 t2;

@@ -1,0 +1,22 @@
+﻿Задание 1.
+Предложите коррективы по структуре таблицы
+CREATE TABLE [dbo].[DlgInfo](
+	[dialog_id] [nvarchar](25),
+	[lastTimeMsg] [int],
+	[nameOfChat] [nvarchar](25) NULL,
+	[typeOfDlg] [int] NOT NULL
+)
+Решение:
+— dialog_id: как минимум, сделать уникальным идентификатором(PRIMARY KEY), 
+а как максимум поменять тип(если это допустимо) на int вместо nvarchar это позволит уменьшить объем памяти необходимый для хранения данных и ускорит запросы, 
+особенно при индексировании dialog_id. 
+— заменить тип int у lastTimeMsg на datetime, чтобы хранить точное время последнего сообщения.
+— увеличить длину nameOfChat для возможности хранения более длинных названий чатов.
+
+Итог:
+CREATE TABLE [dbo].[DlgInfo] (
+    [dialog_id] NVARCHAR(25) PRIMARY KEY,
+    [lastTimeMsg] DATETIME,
+    [nameOfChat] NVARCHAR(50) NULL,
+    [typeOfDlg] INT NOT NULL
+);
